@@ -4,16 +4,19 @@ import urllib.request
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
+import gdown
+import os
 
 # URL del modelo en Google Drive
 model_url = 'https://drive.google.com/file/d/1U96luzv8S4RLlUI6np_ZR7JgmM8QduA3/view?usp=sharing'
 model_filename = 'model.h5'
 
-# Descargar el modelo si no está en la carpeta
-if not st.file_exists(model_filename):
+if not os.path.exists(model_filename):
     with st.spinner('Descargando el modelo...'):
-        urllib.request.urlretrieve(model_url, model_filename)
+        gdown.download(model_url, model_filename)
     st.success('Modelo descargado con éxito!')
+else:
+    st.write(f'El archivo {model_filename} ya existe en la carpeta.')
 
 # Título de la aplicación
 st.title('Predicción de Imágenes con Modelo de Deep Learning')
