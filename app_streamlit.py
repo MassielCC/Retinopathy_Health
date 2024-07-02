@@ -9,20 +9,20 @@ import os
 import zipfile
 
 # URL del modelo en Google Drive
-zip_url = 'https://drive.google.com/file/d/1R9koEm96XsSaNjkCj0Izby2XOKYFyTzp/view?usp=sharing'
+zip_url = 'https://drive.google.com/uc?id=1R9koEm96XsSaNjkCj0Izby2XOKYFyTzp&export=download'
 zip_filename = 'retinopathy_detection_finetunning.zip'
 model_filename = 'retinopathy_detection_finetunning.keras'
 
 if not os.path.exists(zip_filename):
     with st.spinner('Descargando el archivo ZIP...'):
-        gdown.download(zip_url, zip_filename)
+        gdown.download(zip_url, zip_filename, quiet=False)
     st.success('Archivo ZIP descargado con éxito!')
 
-# Extraer el archivo .h5 del ZIP si no está en la carpeta
+# Extraer el modelo del archivo ZIP
 if not os.path.exists(model_filename):
     with zipfile.ZipFile(zip_filename, 'r') as zip_ref:
-        zip_ref.extract(model_filename)
-    st.success(f'Archivo {model_filename} extraído del ZIP con éxito!')
+        zip_ref.extractall('.')
+    st.success('Modelo extraído con éxito!')
 
 # Título de la aplicación
 st.title('Predicción de Imágenes con Modelo de Deep Learning')
