@@ -6,17 +6,23 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import gdown
 import os
+import zipfile
 
 # URL del modelo en Google Drive
-model_url = 'https://drive.google.com/file/d/1U96luzv8S4RLlUI6np_ZR7JgmM8QduA3/view?usp=sharing'
-model_filename = 'model.h5'
+zip_url = 'https://drive.google.com/file/d/1U96luzv8S4RLlUI6np_ZR7JgmM8QduA3/view?usp=sharing'
+zip_filename = 'retinopathy_detection_finetunning.keras.zip'
+model_filename = 'retinopathy_detection_finetunning.keras'
 
+if not os.path.exists(zip_filename):
+    with st.spinner('Descargando el archivo ZIP...'):
+        gdown.download(zip_url, zip_filename)
+    st.success('Archivo ZIP descargado con éxito!')
+
+# Extraer el archivo .h5 del ZIP si no está en la carpeta
 if not os.path.exists(model_filename):
-    with st.spinner('Descargando el modelo...'):
-        urllib.request.urlretrieve(model_url, model_filename)
-    st.success('Modelo descargado con éxito!')
-else:
-    st.write(f'El archivo {model_filename} ya existe en la carpeta.')
+    with zipfile.ZipFile(zip_filename, 'r') as zip_ref:
+        zip_ref.extract(model_filename)
+    st.success(f'Archivo {model_filename} extraído del ZIP con éxito!')
 
 # Título de la aplicación
 st.title('Predicción de Imágenes con Modelo de Deep Learning')
