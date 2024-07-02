@@ -49,7 +49,10 @@ if uploaded_file is not None:
 
         # Mostrar resultados
         st.write("Predicción:")
-        st.write(prediction)
+        if prediction<0.5:
+            st.write(prediction, "-> NO tiene retinopatía diabética")
+        else:
+            st.write(prediction, "-> SI tiene retinopatía diabética")
 
     except Exception as e:
         st.write("Error al cargar el modelo o procesar la imagen. Detalles del error:", e)
