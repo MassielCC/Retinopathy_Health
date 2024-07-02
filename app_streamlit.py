@@ -9,8 +9,8 @@ import os
 import zipfile
 
 # URL del modelo en Google Drive
-zip_url = 'https://drive.google.com/file/d/1U96luzv8S4RLlUI6np_ZR7JgmM8QduA3/view?usp=sharing'
-zip_filename = 'retinopathy_detection_finetunning.keras.zip'
+zip_url = 'https://drive.google.com/file/d/1R9koEm96XsSaNjkCj0Izby2XOKYFyTzp/view?usp=sharing'
+zip_filename = 'retinopathy_detection_finetunning.zip'
 model_filename = 'retinopathy_detection_finetunning.keras'
 
 if not os.path.exists(zip_filename):
