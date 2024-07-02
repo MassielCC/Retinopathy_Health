@@ -13,7 +13,7 @@ model_filename = 'model.h5'
 
 if not os.path.exists(model_filename):
     with st.spinner('Descargando el modelo...'):
-        gdown.download(model_url, model_filename)
+        urllib.request.urlretrieve(model_url, model_filename)
     st.success('Modelo descargado con éxito!')
 else:
     st.write(f'El archivo {model_filename} ya existe en la carpeta.')
