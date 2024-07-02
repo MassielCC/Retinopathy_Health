@@ -1,2 +1,2 @@
-# Retinopathy_Health
- ML Project applied Neuronal Networks on Streamlit
+# Proyecto de Machine Learning de Retinopatía diabética
+ Entrenamiento de un modelo con imágenes de retinopatía diabética
