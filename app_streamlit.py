@@ -1,8 +1,9 @@
 import streamlit as st
 import numpy as np
 import urllib.request
-from keras.models import load_model
-from keras.preprocessing import image
+import tensorflow as tf
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing import image
 
 # URL del modelo en Google Drive
 model_url = 'https://drive.google.com/file/d/1U96luzv8S4RLlUI6np_ZR7JgmM8QduA3/view?usp=sharing'
