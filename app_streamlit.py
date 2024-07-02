@@ -39,7 +39,7 @@ if uploaded_file is not None:
         st.image(uploaded_file, caption='Imagen de entrada', use_column_width=True)
 
         # Preprocesamiento de la imagen para hacer la predicción
-        img = image.load_img(uploaded_file, target_size=(229, 229))  # Ajusta según las dimensiones de entrada de tu modelo
+        img = image.load_img(uploaded_file, target_size=(224, 224))  # Ajusta según las dimensiones de entrada de tu modelo
         img_array = image.img_to_array(img)
         img_array = np.expand_dims(img_array, axis=0)
         img_array /= 255.
